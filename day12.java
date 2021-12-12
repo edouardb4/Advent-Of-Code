@@ -20,8 +20,7 @@ class PartOne {
             connected.add(one);
             caveMap.putIfAbsent(two, connected);
         }
-        HashMap<String, HashSet<String>> visitedMap = new HashMap<String, HashSet<String>>();
-        System.out.println(traverse(visitedMap, caveMap, "", "start", 0));
+        System.out.println(traverse(caveMap, "", "start", 0));
     }
 
     public static boolean ensureValid(String path) {
@@ -38,7 +37,7 @@ class PartOne {
         return true;
     }
 
-    public static int traverse(HashMap<String, HashSet<String>> visited, HashMap<String, HashSet<String>> map, String pathTaken, String key, int count) {
+    public static int traverse(HashMap<String, HashSet<String>> map, String pathTaken, String key, int count) {
         HashSet<String> paths = map.get(key);
         for(String path : paths) {
             if(path.equals("start")) {
@@ -51,7 +50,7 @@ class PartOne {
                 count = count + 1;
                 continue;
             }
-            count = traverse(visited, map, pathTaken + " " + key, path, count);
+            count = traverse(map, pathTaken + " " + key, path, count);
         }
         return count;
     }
@@ -72,8 +71,7 @@ public class PartTwo {
             connected.add(one);
             caveMap.putIfAbsent(two, connected);
         }
-        HashMap<String, HashSet<String>> visitedMap = new HashMap<String, HashSet<String>>();
-        System.out.println(traverse(visitedMap, caveMap, "", "start", 0));
+        System.out.println(traverse(caveMap, "", "start", 0));
     }
 
     public static boolean ensureValid(String path) {
@@ -97,7 +95,7 @@ public class PartTwo {
         return true;
     }
 
-    public static int traverse(HashMap<String, HashSet<String>> visited, HashMap<String, HashSet<String>> map, String pathTaken, String key, int count) {
+    public static int traverse(HashMap<String, HashSet<String>> map, String pathTaken, String key, int count) {
         HashSet<String> paths = map.get(key);
         for(String path : paths) {
             if(path.equals("start")) {
@@ -110,7 +108,7 @@ public class PartTwo {
                 count = count + 1;
                 continue;
             }
-            count = traverse(visited, map, pathTaken + " " + key, path, count);
+            count = traverse(map, pathTaken + " " + key, path, count);
         }
         return count;
     }
